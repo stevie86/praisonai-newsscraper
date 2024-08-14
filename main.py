@@ -1,4 +1,4 @@
-from praison import Pipeline
+from pipeline import Pipeline
 from rss_scraper_agent import RSSScraperAgent
 from summarization_agent import SummarizationAgent
 from script_generation_agent import ScriptGenerationAgent
