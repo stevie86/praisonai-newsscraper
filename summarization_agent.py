@@ -1,10 +1,10 @@
 from agent import Agent
-import anthropic
+from anthropic import Anthropic
 
 class SummarizationAgent(Agent):
     def __init__(self, api_key):
         super().__init__()
-        self.client = anthropic.Client(api_key)
+        self.client = Anthropic(api_key=api_key)
 
     def run(self, articles):
         summaries = []
@@ -21,11 +21,11 @@ Your summary should:
 3. Be clear and easy to understand
 4. Maintain a neutral tone"""
 
-            response = self.client.completion(
-                prompt=prompt,
+            response = self.client.completions.create(
                 model="claude-2",
                 max_tokens_to_sample=200,
-                temperature=0.7
+                temperature=0.7,
+                prompt=prompt
             )
             summaries.append({
                 'title': article['title'],

@@ -1,10 +1,10 @@
 from agent import Agent
-import anthropic
+from anthropic import Anthropic
 
 class ScriptGenerationAgent(Agent):
     def __init__(self, api_key):
         super().__init__()
-        self.client = anthropic.Client(api_key)
+        self.client = Anthropic(api_key=api_key)
 
     def run(self, summaries):
         scripts = []
@@ -25,14 +25,14 @@ Guidelines for the script:
 
 Format the script with clear sections for INTRO, MAIN CONTENT, and OUTRO."""
 
-            response = self.client.completion(
-                prompt=prompt,
+            response = self.client.completions.create(
                 model="claude-2",
                 max_tokens_to_sample=400,
-                temperature=0.8
+                temperature=0.8,
+                prompt=prompt
             )
             scripts.append({
                 'title': summary['title'],
-                'script': response.completion.strip()
+                'script': response.completion
             })
         return scripts
