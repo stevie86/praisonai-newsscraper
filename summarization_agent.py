@@ -6,9 +6,12 @@ class SummarizationAgent(Agent):
         super().__init__()
         self.client = Anthropic(api_key=api_key)
 
-    def run(self, articles):
+    def run(self, data=None):
+        if not data:
+            return []
+        
         summaries = []
-        for article in articles:
+        for article in data:
             prompt = f"""Summarize the following article in 3-4 concise sentences. Focus on the key points, main insights, and any notable data or statistics. Ensure the summary is informative and engaging:
 
 Title: {article['title']}

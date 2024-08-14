@@ -11,10 +11,11 @@ class RSSScraperAgent(Agent):
         for url in self.feed_urls:
             feed = feedparser.parse(url)
             for entry in feed.entries:
-                articles.append({
+                article = {
                     'title': entry.title,
                     'link': entry.link,
-                    'summary': entry.summary,
-                    'published': entry.published
-                })
+                    'summary': entry.get('summary', ''),
+                    'published': entry.get('published', '')
+                }
+                articles.append(article)
         return articles
