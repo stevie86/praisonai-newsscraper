@@ -22,8 +22,20 @@ This project is a PraisonAI-powered pipeline that scrapes RSS feeds, summarizes 
    ```
 
 3. Set up your Anthropic API key as an environment variable:
+   
+   For Linux/macOS:
    ```
    export ANTHROPIC_API_KEY='your_api_key_here'
+   ```
+   
+   For Windows (Command Prompt):
+   ```
+   set ANTHROPIC_API_KEY=your_api_key_here
+   ```
+   
+   For Windows (PowerShell):
+   ```
+   $env:ANTHROPIC_API_KEY = 'your_api_key_here'
    ```
 
 4. Update the RSS feed URLs in `main.py` to your desired sources.
