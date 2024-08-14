@@ -38,7 +38,11 @@ This project is a PraisonAI-powered pipeline that scrapes RSS feeds, summarizes 
    $env:ANTHROPIC_API_KEY = 'your_api_key_here'
    ```
 
-4. Update the RSS feed URLs in `main.py` to your desired sources.
+4. Create a `config.json` file based on the `config.example.json` template:
+   ```
+   cp config.example.json config.json
+   ```
+   Then edit `config.json` to include your desired RSS feed URLs.
 
 ## Usage
 

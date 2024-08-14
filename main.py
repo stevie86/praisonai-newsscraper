@@ -3,10 +3,22 @@ from rss_scraper_agent import RSSScraperAgent
 from summarization_agent import SummarizationAgent
 from script_generation_agent import ScriptGenerationAgent
 import os
+import json
+
+def load_config():
+    try:
+        with open('config.json', 'r') as config_file:
+            return json.load(config_file)
+    except FileNotFoundError:
+        print("config.json not found. Please create it based on config.example.json.")
+        exit(1)
 
 def main():
+    # Load configuration
+    config = load_config()
+
     # Initialize agents
-    rss_scraper = RSSScraperAgent(['https://example.com/rss', 'https://another-example.com/rss'])
+    rss_scraper = RSSScraperAgent(config['rss_feeds'])
     summarizer = SummarizationAgent(os.environ['ANTHROPIC_API_KEY'])
     script_generator = ScriptGenerationAgent(os.environ['ANTHROPIC_API_KEY'])
 
