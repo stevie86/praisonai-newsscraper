@@ -1,4 +1,4 @@
-from praison import Agent
+from agent import Agent
 import anthropic
 
 class ScriptGenerationAgent(Agent):

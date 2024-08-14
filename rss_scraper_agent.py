@@ -1,5 +1,5 @@
 import feedparser
-from praison import Agent
+from agent import Agent
 
 class RSSScraperAgent(Agent):
     def __init__(self, feed_urls):
